@@ -26,6 +26,22 @@ const metryka = [
   {
     name: "Rychu",
     born: 1953,    
+  },
+  {
+    name: "Damian",
+    born: 1950,    
+  },
+  {
+    name: "Kazik",
+    born: 1949,    
+  },
+  {
+    name: "Wladziu",
+    born: 1949,    
+  },
+  {
+    name: "Stasiu",
+    born: 1949,    
   }
 ];
 
@@ -35,6 +51,8 @@ function findTheOldest(){
   let najstarsi = [0];
   let iloscDziadow = 0;
   for (let i = 0; i < metryka.length; i++){
+
+    console.log(najstarsi);
 
     if (metryka[i].hasOwnProperty("death")){
       let wiek = metryka[i].death - metryka[i].born;
@@ -48,7 +66,7 @@ function findTheOldest(){
       oldest = tablicaWieku[i];
       wiekNumber = i;
       najstarsi.shift();
-      for(let i = 0; i < iloscDziadow; i++){
+      for(let k = 0; k < iloscDziadow; k++){
         najstarsi.shift();
       }
       najstarsi.push(metryka[i]);
@@ -56,7 +74,8 @@ function findTheOldest(){
     } else if (tablicaWieku[i] == oldest){
       najstarsi.push(metryka[i]);
       iloscDziadow++;
-    }
+    }  
+      
   } 
   
   if (najstarsi.length == 1){
@@ -65,10 +84,10 @@ function findTheOldest(){
     console.log("Ma " + tablicaWieku[wiekNumber] + " lat");
   } else {
     console.log("Najstarsze dziady to: ")
-    for(let j = 0; j < iloscDziadow; j++){
+    for(let j = 0; j < iloscDziadow + 1; j++){
       console.log(najstarsi[j].name);
     }
-    console.log("Maja " + tablicaWieku[wiekNumber] + " lat");
+    console.log("Maja " + tablicaWieku[wiekNumber] + " lata");
   }
 return najstarsi;  
 }
