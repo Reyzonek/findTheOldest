@@ -11,7 +11,7 @@ const metryka = [
   },
   {
     name: "Bogdan",
-    born: 1950,    
+    born: 1953,    
   },
   {
     name: "Zdzichu",
@@ -51,7 +51,8 @@ function findTheOldest(){
       for(let i = 0; i < iloscDziadow; i++){
         najstarsi.shift();
       }
-      najstarsi.push(metryka[i]);    
+      najstarsi.push(metryka[i]);
+      iloscDziadow = 0;    
     } else if (tablicaWieku[i] == oldest){
       najstarsi.push(metryka[i]);
       iloscDziadow++;
@@ -60,15 +61,17 @@ function findTheOldest(){
   
   if (najstarsi.length == 1){
     console.log("Najstarszy dziad to: ")
-    console.log(najstarsi);
+    console.log(najstarsi[0].name);
     console.log("Ma " + tablicaWieku[wiekNumber] + " lat");
   } else {
     console.log("Najstarsze dziady to: ")
-    console.log(najstarsi);
+    for(let j = 0; j < iloscDziadow; j++){
+      console.log(najstarsi[j].name);
+    }
     console.log("Maja " + tablicaWieku[wiekNumber] + " lat");
   }
-return metryka[wiekNumber];  
+return najstarsi;  
 }
 
 
-findTheOldest();
+console.log(findTheOldest());
